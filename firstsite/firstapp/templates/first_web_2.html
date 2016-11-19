@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>first web</title>
-        <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/semantic.css' %}"  media="screen" title="no title" charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
 
 
@@ -84,7 +84,7 @@
           {% for article in article_list %}
           {# 增加模板for循环 从而支持无数篇文章都能用的数据  #}
           <div class="ui container vertical segment">
-              <a href="#">
+              <a href="{% url 'detail' article.id %}">
                   <h1 class="ui header">
                       {{article.headline}} {# 为文章标题增加模板标签增 #}
                   </h1>
@@ -93,7 +93,7 @@
               <i class="icon grey small unhide">10,000</i>
               <p>
                   {{ article.content|truncatewords:100 }}
-                  <a href="#">
+                  <a href="{% url 'detail' article.id %}">
                       <i class="angle tiny double grey right icon">READMORE</i>
                   </a>
               </p>

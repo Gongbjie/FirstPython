@@ -15,5 +15,14 @@ class Article(models.Model):
         ('life', 'Life'),
     )
     tag = models.CharField(null=True, blank=True, max_length=5, choices=TAG_CHOICES)
+    # under_comment =
     def __str__(self):
         return self.headline
+
+class Comment(models.Model):
+    name = models.CharField(null=True, blank=True, max_length=50)
+    comment = models.TextField()
+    belong_to = models.ForeignKey(to=Article, related_name='under_comments' , null=True, blank=True)
+    best_comment = models.BooleanField(default=False)
+    def __str__(self):
+        return self.comment
